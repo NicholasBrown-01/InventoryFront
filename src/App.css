@@ -1,0 +1,9 @@
+* {
+  color: black !important;
+
+  background-color: white !important;
+  margin: 25px;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+}

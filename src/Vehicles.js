@@ -22,14 +22,14 @@ handleVehicleLoading = async (event) => {
   try {
     let url = `${process.env.REACT_APP_SERVER}/vehicles`;
     let vehicleDataFromAxios = await axios.get(url);
-    console.log(url);
+    console.log(vehicleDataFromAxios.data);
 
     this.setState({
       vehicleArray: vehicleDataFromAxios.data,
       error:false
     });
     console.log(vehicleDataFromAxios.data);
-    
+
   } catch (error) {
     this.setState({
       error: true,
