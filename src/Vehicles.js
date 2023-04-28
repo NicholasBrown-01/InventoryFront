@@ -19,40 +19,40 @@ class Vehicles extends React.Component {
 
 
   // *** LOAD IN VEHICLES *** //
-handleVehicleLoading = async (event) => {
+  handleVehicleLoading = async (event) => {
 
-  try {
-    let url = `${process.env.REACT_APP_SERVER}/vehicles`;
-    let vehicleDataFromAxios = await axios.get(url);
-    console.log(vehicleDataFromAxios.data);
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/vehicles`;
+      let vehicleDataFromAxios = await axios.get(url);
 
-    this.setState({
-      vehicleArray: vehicleDataFromAxios.data,
-      error:false
-    });
-    console.log(vehicleDataFromAxios.data);
+      this.setState({
+        vehicleArray: vehicleDataFromAxios.data,
+        error: false
+      });
+      console.log(vehicleDataFromAxios.data);
 
-  } catch (error) {
-    this.setState({
-      error: true,
-      errorMessage: error.message
-    })
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMessage: error.message
+      })
+    }
+  };
+
+  componentDidMount() {
+    this.handleVehicleLoading();
   }
-};
 
-componentDidMount() {
-  this.handleVehicleLoading();
-}
+  render() {
 
-render () {
-  console.log(this.state);
-  return (
-    <VehicleCard />
-  )
-}
-
-
-
+    return (
+      <div className="vehicles-container">
+        {this.state.vehicleArray.map(vehicleArray => (
+          <VehicleCard key={vehicleArray._id} vehicleArray={vehicleArray} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default Vehicles;
