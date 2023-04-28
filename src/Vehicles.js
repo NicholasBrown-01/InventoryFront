@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import './App.css';
+import VehicleCard from './VehicleCard';
 
 
 
@@ -45,10 +47,7 @@ componentDidMount() {
 render () {
   console.log(this.state);
   return (
-    <header>
-      <h1>Vehicle Inventory Page</h1>
-    
-    </header>
+    <VehicleCard />
   )
 }
 
