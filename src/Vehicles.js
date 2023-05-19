@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import VehicleCard from './VehicleCard';
+import VehicleModal from './VehicleModal';
 
 
 
@@ -12,8 +13,21 @@ class Vehicles extends React.Component {
     this.state = {
       error: false,
       errorMessage: '',
+      showModal: false,
       vehicleArray: []
     }
+  }
+
+  handleCloseVehicleModal = () => {
+    this.setState({
+      showModal: false
+    });
+  }
+
+  handleOpenVehicleModal = () => {
+    this.setState({
+      showModal: true
+    });
   }
 
 
@@ -48,8 +62,14 @@ class Vehicles extends React.Component {
     return (
       <div className="vehicles-container">
         {this.state.vehicleArray.map(vehicleArray => (
-          <VehicleCard key={vehicleArray._id} vehicleArray={vehicleArray} />
+          <VehicleCard
+          key={vehicleArray._id}
+          vehicleArray={vehicleArray}
+          showModal={this.state.showModal}
+          handleCloseVehicleModal={this.handleCloseVehicleModal}
+          handleOpenVehicleModal={this.handleOpenVehicleModal} />
         ))}
+
       </div>
     );
   }
